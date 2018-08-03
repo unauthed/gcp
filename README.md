@@ -1,11 +1,11 @@
 # Google Cloud Platform
 
-Bristol GCP meetup group repository.
+GDG Bristol meetup group repository.
 
-- [Bristol GCP Meetup](https://www.meetup.com/GCP-Bristol/)
-- [Bristol GCP Wiki](http://gcp.unauthed.io)
-- [Bristol GCP Slack](https://join.slack.com/t/unauthed/shared_invite/enQtNDEwMTg1MjM0NTc5LWYzNTRkYThlZTk0MTA2NjNlMmVlMDNlN2IzYjM0M2NjMTcwYzM5NWVmNmI2NWUxYWMxYmQ3YmE4MDRjODQyYmY)
+- [Meetup](https://www.meetup.com/GDG-Bristol/)
+- [Wiki](http://gdg-bristol.unauthed.io)
+- [Slack](https://join.slack.com/t/unauthed/shared_invite/enQtNDEwMTg1MjM0NTc5LWYzNTRkYThlZTk0MTA2NjNlMmVlMDNlN2IzYjM0M2NjMTcwYzM5NWVmNmI2NWUxYWMxYmQ3YmE4MDRjODQyYmY)
 
 ---
 
-[Bristol GCP Awesome List](awesome-gcp.md)
+[GDG Bristol Awesome List](awesome-gdg.md)

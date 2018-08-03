@@ -1,4 +1,4 @@
-# GCP
+# Google Cloud Platform
 
 Bristol GCP meetup group repository.
 

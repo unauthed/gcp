@@ -1,3 +1,3 @@
-# Awesome GCP List
+# Awesome GDG List
 
 - you go first...

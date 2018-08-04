@@ -1,10 +1,10 @@
 # GDG Bristol - WIP
 
-- Code of Conduct
+- [Code of Conduct](CODE_OF_CONDUCT.md)
 - Meetup Group
 - Slack Channel
 
 ---
 
-Awesome List
+[Awesome List](awesome-gdg.md)
 

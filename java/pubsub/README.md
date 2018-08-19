@@ -29,7 +29,6 @@ mvn clean package
 mvn spring-boot:run
 
 browse http://localhost:8080
-
 ```
 
 ## Package and Deploy
@@ -47,7 +46,6 @@ browse https://console.cloud.google.com/appengine
 
 mvn clean install -Pdeb,docker.gcp
 gcloud app browse
-
 ```
 
 ---
@@ -106,7 +104,8 @@ browse http://localhost:9001/actuator/metrics/http.server.requests
 If there is time we can show how Spring Boot integrates with Prometheus, ZipKin and Grafana. 
 
 ```
-docker-compose up
+docker-compose up -d
+mvn clean spring-boot:run -Pmetrics
 browse http://localhost:9090
 browse http://localhost:9080
 browse http://localhost:9411

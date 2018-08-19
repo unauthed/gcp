@@ -76,7 +76,7 @@ public class Application {
 	public MessageHandler messageReceiver() {
 
 		return message -> {
-			log.info("Message arrived {}.", message.getPayload());
+			log.info("Message arrived with payload '{}'.", message.getPayload());
 			AckReplyConsumer consumer = (AckReplyConsumer) message.getHeaders().get(GcpPubSubHeaders.ACKNOWLEDGEMENT);
 			consumer.ack();
 		};

@@ -32,7 +32,7 @@ public class Controller {
 	@PostMapping("/publishMessage")
 	public RedirectView publishMessage(@RequestParam("message") String message) {
 
-		log.debug("Publishing message '{}'.", message);
+		log.info("Publishing message '{}'.", message);
 		outboundGateway.sendToPubSub(message);
 		return new RedirectView("/");
 	}
@@ -42,7 +42,7 @@ public class Controller {
 	@PostMapping("/proxyMessage")
 	public String proxyMessage(@RequestParam("message") String message) {
 
-		log.debug("Posting message '{}' to '{}'.", message, proxyEndpoint);
+		log.info("Posting message '{}' to '{}'.", message, proxyEndpoint);
 		return restTemplate.postForObject(proxyEndpoint, message, String.class);
 	}
 }

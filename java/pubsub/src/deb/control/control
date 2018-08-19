@@ -1,0 +1,10 @@
+Package: [[name]]
+Version: [[version]]
+Section: misc
+Priority: optional
+Architecture: all
+Depends: jdk (>= 1.8)
+Maintainer: GDG-Bristol <gdg@unauthed.io>
+Description: Part of the show and tell experience
+Distribution: development
+Depends: openjdk-8-jdk

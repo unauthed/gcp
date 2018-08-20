@@ -2,16 +2,15 @@
 
 ## What you'll need
 
-- Java 8
-- Maven 3.5
-- Google Cloud SDK 212 - https://cloud.google.com/sdk/
+- Java v8 - [Oracle Download](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- Maven v3.5 - [Apache Download](https://maven.apache.org/)
+- Google Cloud SDK v212 - [Google Download](https://cloud.google.com/sdk/)
 
 ## Set up Google Cloud Pub/Sub environment
 
 The GCP project ID is auto-configured from the `GOOGLE_CLOUD_PROJECT` environment variable.
 
-You will need a topic and a subscription to send and receive messages from Google Cloud Pub/Sub.
-You can create them in the `https://console.cloud.google.com/cloudpubsub`.
+You will need a topic and a subscription to send and receive messages from Google Cloud Pub/Sub. You can create them in the `https://console.cloud.google.com/cloudpubsub`.
 
 ## Authentication
 
@@ -24,9 +23,9 @@ If you have the **Google Cloud SDK** installed, you can log in with your user ac
 ## Build and Run
 
 ```
-mvn clean package
+mvn clean package -DskipTests
 
-mvn spring-boot:run
+mvn spring-boot:run -DskipTests
 
 browse http://localhost:8080
 ```
@@ -34,7 +33,7 @@ browse http://localhost:8080
 ## Package and Deploy
 
 ```
-mvn clean package
+mvn clean install
 
 mvn package -Pdeb -DskipTests
 
@@ -44,7 +43,7 @@ mvn docker:push -Pdocker -DskipTests
 mvn appengine:deploy -Pgcp -DskipTests
 browse https://console.cloud.google.com/appengine
 
-mvn clean install -Pdeb,docker.gcp
+mvn clean install -Pdeb,docker,gcp
 gcloud app browse
 ```
 
@@ -72,7 +71,7 @@ gcloud init
 gcloud config list
 
 gcloud config configurations activate my-project2
-gcloud config configurations describe
+gcloud config configurations describe my-project2
 gcloud config configurations activate my-project1
 gcloud config configurations describe
 
@@ -101,7 +100,7 @@ browse http://localhost:9001/actuator
 browse http://localhost:9001/actuator/metrics/http.server.requests
 ```
 
-If there is time we can show how Spring Boot integrates with Prometheus, ZipKin and Grafana. 
+If there is time we can show how Spring Boot integrates with Prometheus, ZipKin and Grafana.
 
 ```
 docker-compose up -d

@@ -4,7 +4,6 @@ import java.net.URI;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,14 +19,19 @@ public class Controller {
 
 	private static final Logger log = LoggerFactory.getLogger(Controller.class);
 
-	@Value("${gdg.proxy.url}")
-	private URI proxyEndpoint;
+	private final URI proxyEndpoint;
 
-	@Autowired
-	private RestTemplate restTemplate;
+	private final RestTemplate restTemplate;
 
-	@Autowired
-	private PubSubOutboundGateway outboundGateway;
+	private final PubSubOutboundGateway outboundGateway;
+
+	public Controller(@Value("${gdg.proxy.url}") URI proxyEndpoint, RestTemplate restTemplate,
+			PubSubOutboundGateway outboundGateway) {
+
+		this.proxyEndpoint = proxyEndpoint;
+		this.restTemplate = restTemplate;
+		this.outboundGateway = outboundGateway;
+	}
 
 	@PostMapping("/publishMessage")
 	public RedirectView publishMessage(@RequestParam("message") String message) {

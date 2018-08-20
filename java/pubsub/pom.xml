@@ -214,7 +214,7 @@
 							<repository>gdg-bristol/${project.artifactId}</repository>
 							<tag>${project.version}</tag>
 							<buildArgs>
-								<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+								<ARTIFACT_FILE>${project.build.finalName}.jar</ARTIFACT_FILE>
 							</buildArgs>
 						</configuration>
 						<dependencies>

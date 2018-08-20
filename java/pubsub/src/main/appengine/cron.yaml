@@ -1,0 +1,10 @@
+
+cron:
+- description: "daily test message"
+  url: /publishMessage
+  schedule: every 24 hours
+- description: "monday morning test message"
+  url: /proxyMessage
+  schedule: every monday 09:00
+  timezone: Australia/NSW
+

@@ -24,10 +24,12 @@ If you have the **Google Cloud SDK** installed, you can log in with your user ac
 
 ```
 mvn clean package -DskipTests
-
 mvn spring-boot:run -DskipTests
 
 browse http://localhost:8080
+
+curl -d "message=test1" http://localhost:8080/publishMessage
+curl -d "message=test2" http://localhost:8080/proxyMessage
 ```
 
 ## Package and Deploy
@@ -41,10 +43,12 @@ mvn package -Pdocker -DskipTests
 mvn docker:push -Pdocker -DskipTests
 
 mvn appengine:deploy -Pgcp -DskipTests
+gcloud app logs tail -s default
+gcloud app describe
+gcloud app browse
 browse https://console.cloud.google.com/appengine
 
 mvn clean install -Pdeb,docker,gcp
-gcloud app browse
 ```
 
 ---
@@ -104,10 +108,12 @@ If there is time we can show how Spring Boot integrates with Prometheus, ZipKin 
 
 ```
 docker-compose up -d
+
 mvn clean spring-boot:run -Ptrace
 browse http://localhost:9090
 browse http://localhost:9080
 browse http://localhost:9411
 browse http://localhost:3000
+
 docker-compose down
 ```

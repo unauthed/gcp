@@ -105,7 +105,7 @@ If there is time we can show how Spring Boot integrates with Prometheus, ZipKin 
 
 ```
 docker-compose up -d
-mvn clean spring-boot:run -Pmetrics
+mvn clean spring-boot:run -Ptrace
 browse http://localhost:9090
 browse http://localhost:9080
 browse http://localhost:9411

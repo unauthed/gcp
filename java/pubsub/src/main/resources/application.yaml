@@ -11,8 +11,8 @@ management:
     health:
       show-details: 'ALWAYS'
   server:
-    address: '127.0.0.1'
-    port: '9001'
+    address: '0.0.0.0'
+    port: '8080'
 
 spring:
   application:
@@ -26,8 +26,7 @@ spring:
 
 gdg:
   proxy:
-#    url: '${GDG_PROXY_URL:http://localhost:8090}'
-    url: 'http://localhost:8090'
+    url: '${GDG_PROXY_URL:http://localhost:8888}'
   message:
     topic: '${GDG_MESSAGE_TOPIC:testTopic}'
     subscription: '${GDG_MESSAGE_SUBSCRIPTION:testSubscription}'

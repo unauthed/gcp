@@ -6,9 +6,46 @@ runtime_config:
   jdk: openjdk8
 
 handlers:
-- url: /.*
-  script: this field is required, but ignored
+  - url: /.*
+    script: this field is required, but ignored
 
-manual_scaling:
-  instances: 1
-  
+skip_files:
+  - ^(.*/)?\.bak$
+
+network:
+  instance_tag: gdg-bristol
+
+liveness_check:
+  path: '/actuator/health'
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+
+readiness_check:
+  path: '/actuator/health'
+  check_interval_sec: 5
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+  app_start_timeout_sec: 300
+
+resources:
+  cpu: 2
+  memory_gb: 1.4
+  disk_size_gb: 10
+
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+  cool_down_period_sec: 180
+  cpu_utilization:
+    target_utilization: 0.6
+
+#manual_scaling:
+#  instances: 1
+
+env_variables:
+  GDG_PROXY_URL: 'https://us-central1-gdg-bristol.cloudfunctions.net/pubsub-http-poc'
+  GDG_MESSAGE_TOPIC: 'testTopic'
+  GDG_MESSAGE_SUBSCRIPTION: 'testSubscription'

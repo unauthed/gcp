@@ -1,6 +1,8 @@
 package gdg.bristol.pubsub;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +48,10 @@ public class Controller {
 	@PostMapping("/proxyMessage")
 	public String proxyMessage(@RequestParam("message") String message) {
 
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("message", message);
+
 		log.info("Posting message '{}' to '{}'.", message, proxyEndpoint);
-		return restTemplate.postForObject(proxyEndpoint, message, String.class);
+		return restTemplate.postForObject(proxyEndpoint, params, String.class);
 	}
 }

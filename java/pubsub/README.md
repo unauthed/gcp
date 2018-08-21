@@ -47,12 +47,11 @@ gcloud auth list
 
 ```
 mvn clean package -DskipTests
-mvn spring-boot:run -DskipTests
-
+mvn spring-boot:run -DskipTests || mvn spring-boot:run -DskipTests -Dgdg.proxy.url=https://localhost:9090/yourRestfulEndpoint
 browse http://localhost:8080
 
-curl -d "message=test1" http://localhost:8080/publishMessage
-curl -d "message=test2" http://localhost:8080/proxyMessage
+curl -i -d "message=test1" http://localhost:8080/publishMessage
+curl -i -d "message=test2" http://localhost:8080/proxyMessage
 ```
 
 ## Package and Deploy
@@ -78,7 +77,7 @@ mvn clean install -Pdeb,docker,gcp
 
 ## Tips and Tricks
 
-Or reminders for the show and tell, in case we are getting nervous.
+Or reminders for the show and tell, in case we are getting all nervous.
 
 ### gcloud working with multiple configurations
 

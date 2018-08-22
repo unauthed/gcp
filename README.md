@@ -9,3 +9,11 @@ GDG Bristol meetup group repository.
 ---
 
 [GDG Bristol Awesome List](awesome-gdg.md)
+
+# Configure Mac OS (Using HomeBrew)
+Install Homebrew:
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew cask install caskroom/versions/java8
+brew install maven
+brew cask install google-cloud-sdk

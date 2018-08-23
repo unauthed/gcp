@@ -1,0 +1,56 @@
+
+spring:
+  sleuth:
+    web:
+      skipPattern: '(.+favicon.*)'
+  cloud:
+    gcp:
+      logging:        
+        enabled: 'false'
+      trace:
+        enabled: 'false'
+      config:
+        enabled: 'false'
+
+---
+
+spring:
+  profiles: 'production'
+  main:
+    banner-mode: 'off'  
+  cloud:
+    gcp:
+      logging:        
+        enabled: 'true'
+      trace:
+        enabled: 'true'    
+      config:
+        enabled: 'true'
+        name: 'pubsub'
+        profile: 'production'
+        
+logging:
+  level:
+    .: WARN
+    org.springframework: ERROR        
+    gdg.bristol.pubsub: INFO
+
+---
+
+spring:
+  profiles: 'development'
+  main:
+    banner-mode: 'off'  
+  sleuth:
+    sampler:
+      probability: '1'  # Send 100% of the request traces to Stackdriver
+  cloud:
+    gcp:
+      logging:        
+        enabled: 'true'
+      trace:
+        enabled: 'true'    
+      config:
+        enabled: 'true'
+        name: 'pubsub'
+        profile: 'development'

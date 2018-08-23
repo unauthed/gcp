@@ -47,11 +47,11 @@ gcloud auth list
 
 ```
 mvn clean package -DskipTests
-mvn spring-boot:run -DskipTests || mvn spring-boot:run -DskipTests -Dgdg.proxy.url=https://localhost:9090/yourRestfulEndpoint
+mvn spring-boot:run -DskipTests
+
 browse http://localhost:8080
 
 curl -i -d "message=test1" http://localhost:8080/publishMessage
-curl -i -d "message=test2" http://localhost:8080/proxyMessage
 ```
 
 ## Package and Deploy
@@ -69,8 +69,6 @@ gcloud app logs tail -s default
 gcloud app describe
 gcloud app browse
 browse https://console.cloud.google.com/appengine
-
-mvn clean install -Pdeb,docker,gcp
 ```
 
 ---
@@ -117,13 +115,30 @@ grep -i google ~/.ssh/config
 ssh my-instance.us-central1-a.my-project1
 ```
 
+### gcloud runtime configuration (beta)
+
+```
+gcloud beta runtime-config configs create pubsub_development
+gcloud beta runtime-config configs list
+gcloud beta runtime-config configs variables set pubsub.proxyEndpoint http://localhost:9090/echo --config-name pubsub_development
+gcloud beta runtime-config configs variables list --config-name=pubsub_development
+gcloud beta runtime-config configs variables describe pubsub.proxyEndpoint --config-name=pubsub_development
+
+mvn spring-boot:run -DskipTests -Dspring-boot.run.profiles=development
+curl -i -d "message=test3" http://localhost:8080/proxyMessage
+
+gcloud beta runtime-config configs variables set pubsub.proxyEndpoint https://us-central1-gdg-bristol.cloudfunctions.net/pubsub-http-poc --config-name pubsub_development 
+curl -X POST http://localhost:8080/actuator/refresh
+curl -i -d "message=test4" http://localhost:8080/proxyMessage
+```
+
 ### Spring Boot health and metrics endpoints
 
 The standard Spring Boot actuator is enabled for this demonstration.
 
 ```
-browse http://localhost:9001/actuator
-browse http://localhost:9001/actuator/metrics/http.server.requests
+browse http://localhost:8080/actuator
+browse http://localhost:8080/actuator/metrics/http.server.requests
 ```
 
 If there is time we can show how Spring Boot integrates with Prometheus, ZipKin and Grafana.

@@ -1,8 +1,8 @@
 ![splash image](splash.png "GDG Bristol Meetup Group")
 
-# Google Cloud Platform (WIP)
+# Google Cloud Platform
 
-GDG Bristol meetup group writings and resources.
+GDG Bristol meetup group writings and resources
 
 - [GitHub](https://github.com/unauthed/gdg-bristol)
 - [Meetup](https://www.meetup.com/GDG-Bristol/)

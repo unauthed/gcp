@@ -83,15 +83,15 @@ Or reminders for the show and tell, in case we are getting all nervous.
 gcloud config configurations list
 gcloud config set disable_usage_reporting true
 gcloud config set disable_color false
-gcloud config set app/stop_previous_version true
+gcloud config set app_stop_previous_version true
 gcloud config configurations list
 
 gcloud config configurations create my-project1
-gcloud init
+mkdir my-project1 && cd my-project1 && gcloud init
 gcloud config list
 
 gcloud config configurations create my-project2
-gcloud init
+mkdir my-project2 && cd my-project2 && gcloud init
 gcloud config list
 
 gcloud config configurations activate my-project2
@@ -127,7 +127,7 @@ gcloud beta runtime-config configs variables describe pubsub.proxyEndpoint --con
 mvn spring-boot:run -DskipTests -Dspring-boot.run.profiles=development
 curl -i -d "message=test3" http://localhost:8080/proxyMessage
 
-gcloud beta runtime-config configs variables set pubsub.proxyEndpoint https://us-central1-gdg-bristol.cloudfunctions.net/pubsub-http-poc --config-name pubsub_development 
+gcloud beta runtime-config configs variables set pubsub.proxyEndpoint https://us-central1-gdg-bristol.cloudfunctions.net/pubsub-http-poc --config-name pubsub_development
 curl -X POST http://localhost:8080/actuator/refresh
 curl -i -d "message=test4" http://localhost:8080/proxyMessage
 ```

@@ -1,0 +1,10 @@
+docs/
+scripts/
+
+**/RemoteSystemsTempFiles/
+**/.metadata/
+**/.recommenders/
+
+**/target/
+**/.apt_generated/
+**/.settings/

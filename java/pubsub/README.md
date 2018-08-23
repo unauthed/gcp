@@ -54,6 +54,12 @@ browse http://localhost:8080
 curl -i -d "message=test1" http://localhost:8080/publishMessage
 ```
 
+or use cloud builder
+
+```
+gcloud builds submit java/pubsub --config=cloudbuild.yaml
+```
+
 ## Package and Deploy
 
 ```
@@ -83,7 +89,7 @@ Or reminders for the show and tell, in case we are getting all nervous.
 gcloud config configurations list
 gcloud config set disable_usage_reporting true
 gcloud config set disable_color false
-gcloud config set app_stop_previous_version true
+gcloud config set app/stop_previous_version true
 gcloud config configurations list
 
 gcloud config configurations create my-project1

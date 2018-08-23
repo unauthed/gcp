@@ -1,3 +1,5 @@
+![splash image](spash.png "GDG Bristol Splash Image")
+
 # Google Cloud Platform (WIP)
 
 GDG Bristol meetup group writings and resources.

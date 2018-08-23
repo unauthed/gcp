@@ -1,4 +1,4 @@
-![splash image](spash.png "GDG Bristol Splash Image")
+![splash image](splash.png "GDG Bristol Meetup Group")
 
 # Google Cloud Platform (WIP)
 

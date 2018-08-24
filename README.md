@@ -1,4 +1,4 @@
-# Google Developer Group [![Build Status](https://travis-ci.com/unauthed/gdg-bristol.svg?branch=master)](https://travis-ci.com/unauthed/gdg-bristol)
+# Google Developer Group
 
 GDG Bristol meetup group repository
 

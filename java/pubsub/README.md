@@ -1,4 +1,4 @@
-# PubSub GDG Bristol Talk
+# PubSub GDG Bristol Talk [![Build Status](https://travis-ci.com/unauthed/gdg-bristol.svg?branch=master)](https://travis-ci.com/unauthed/gdg-bristol)
 
 ## What you'll need
 

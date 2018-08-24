@@ -1,4 +1,4 @@
-# Google Cloud Platform [![Build Status](https://travis-ci.com/unauthed/gdg-bristol.svg?branch=master)](https://travis-ci.com/unauthed/gdg-bristol)
+# Google Developer Group [![Build Status](https://travis-ci.com/unauthed/gdg-bristol.svg?branch=master)](https://travis-ci.com/unauthed/gdg-bristol)
 
 GDG Bristol meetup group repository
 

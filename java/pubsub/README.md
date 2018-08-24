@@ -66,6 +66,7 @@ gcloud builds submit java/pubsub --config=cloudbuild.yaml
 mvn clean install
 
 mvn package -Pdeb -DskipTests
+mvn package -Prpm -DskipTests
 
 mvn package -Pdocker -DskipTests
 mvn docker:push -Pdocker -DskipTests

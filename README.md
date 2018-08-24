@@ -1,5 +1,5 @@
-# Google Cloud Platform [![Build Status](https://travis-ci.com/unauthed/gdg-bristol.svg?branch=master)](https://travis-ci.com/unauthed/gdg-bristol)
- 
+# Google Developer Group [![Build Status](https://travis-ci.com/unauthed/gdg-bristol.svg?branch=master)](https://travis-ci.com/unauthed/gdg-bristol)
+
 GDG Bristol meetup group repository
 
 - [Wiki](http://gdg.unauthed.io)
@@ -9,6 +9,6 @@ GDG Bristol meetup group repository
 ## Repository Layout
 
 - **java** projects
-  + pubsub
+  + [pubsub](java/pubsub/)
 - **node** projects
 - **scripts** useful for presenting and development etc

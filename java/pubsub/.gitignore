@@ -4,8 +4,10 @@ target/
 
 pom.xml.releaseBackup
 release.properties
+LOG_FILE_IS_UNDEFINED
 
 ### STS ###
+
 .apt_generated
 .classpath
 .factorypath

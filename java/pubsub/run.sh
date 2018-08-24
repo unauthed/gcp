@@ -4,5 +4,5 @@ docker-compose up -d
 
 browse http://localhost:8080
 
-mvn spring-boot:run -DskipTests
+mvn spring-boot:run -DskipTests -Dlogging.file=target/app.log
 

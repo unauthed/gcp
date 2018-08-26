@@ -13,9 +13,9 @@ Communication through any of **GDG Bristol** channels (GitHub, Twitter, etc.) mu
 
 We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to the project to do the same.
 
-If any member of the community violates this code of conduct, the maintainers of the GDG Bristol project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.
+If any member of the community violates this code of conduct, the maintainers of the **GDG Bristol** project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.
 
-If you are subject to or witness unacceptable behavior, or have any other concerns, please drop us a line at gdg@unauthed.io.
+If you are subject to or witness unacceptable behavior, or have any other concerns, please drop us a line at **gdg@unauthed.io**.
 
 ### Submitting a Pull Request
 
@@ -32,11 +32,9 @@ Before you submit your pull request consider the following guidelines:
 Please sign our [Contributor License Agreement][google-cla] (CLA) before sending pull requests. For any code
 changes to be accepted, the CLA must be signed. It's a quick process, we promise!
 
-*This guide was inspired by the [AngularJS contribution guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md).*
+*This guide was inspired by the [Firebase contribution guidelines](https://github.com/firebase/firebase-js-sdk/blob/master/CONTRIBUTING.md).*
 
 [github]: https://github.com/unauthed/gdg-bristol
 [google-cla]: https://cla.developers.google.com
 [js-style-guide]: http://google.github.io/styleguide/javascriptguide.xml
-[py-style-guide]: http://google.github.io/styleguide/pyguide.html
-[jsbin]: http://jsbin.com/
 [global-gitignore]: https://help.github.com/articles/ignoring-files/#create-a-global-gitignore

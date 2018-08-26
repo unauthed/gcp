@@ -8,5 +8,6 @@ GDG Bristol meetup group writings and resources
 - [Meetup](https://www.meetup.com/GDG-Bristol/)
 - [Slack](https://join.slack.com/t/unauthed/shared_invite/enQtNDA5OTcyMTU3NDg5LTIxZTQ5NjhmMWE1ZjY4YmQzOTlmMjQxNjU3NGNlZjhjZjQ1ODczMzZhNTI3ZjJmMTk2NGY1MDY0OTE1ODk0ZDU)
 - [Code of Conduct](code-of-conduct.md)
+- [Contributing](contributing.md)
 - [GDG Bristol Awesome List](awesome-gdg.md)
 

@@ -12,3 +12,9 @@ GDG Bristol meetup group repository
   + [pubsub](java/pubsub/)
 - **node** projects
 - **scripts** useful for presenting and development etc
+
+## How to make contributions?
+Please read and follow the steps in the [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## GPLv3 License
+See [LICENSE](LICENSE)

@@ -3,10 +3,12 @@
 ## GCP
 
 - [Firebase Slack Community](https://firebase-community.slack.com)
-- [Codelabs](https://codelabs.developers.google.com)
-- [GCP and AWS - A Networking Comparison](https://www.youtube.com/watch?v=m1LjDJ4k14s)
+- [Firebase Pricing](https://firebase.google.com/pricing/)
 
-- https://www.youtube.com/watch?v=wmP6SQe5J7g
+- [Codelabs](https://codelabs.developers.google.com)
+
+- [GCP and AWS - A Networking Comparison](https://www.youtube.com/watch?v=m1LjDJ4k14s)
+- [VPC Deep Dive](https://www.youtube.com/watch?v=wmP6SQe5J7g)
 
 ## Java
 

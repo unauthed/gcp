@@ -18,7 +18,7 @@ gcloud info
 export GOOGLE_CLOUD_PROJECT=`gcloud config list --format 'value(core.project)'`
 
 gcloud services list
-gcloud services enable logging.googleapis.com pubsub.googleapis.com stackdriver.googleapis.com
+gcloud services enable appengine.googleapis.com pubsub.googleapis.com stackdriver.googleapis.com logging.googleapis.com
 gcloud services enable storage-api.googleapis.com chat.googleapis.com
 gcloud services list --enabled
 
@@ -52,12 +52,6 @@ mvn spring-boot:run -DskipTests
 browse http://localhost:8080
 
 curl -i -d "message=test1" http://localhost:8080/publishMessage
-```
-
-or use cloud builder
-
-```
-gcloud builds submit java/pubsub --config=cloudbuild.yaml
 ```
 
 ## Package and Deploy
@@ -137,6 +131,12 @@ curl -i -d "message=test3" http://localhost:8080/proxyMessage
 gcloud beta runtime-config configs variables set pubsub.proxyEndpoint https://us-central1-gdg-bristol.cloudfunctions.net/pubsub-http-poc --config-name pubsub_development
 curl -X POST http://localhost:8080/actuator/refresh
 curl -i -d "message=test4" http://localhost:8080/proxyMessage
+```
+
+## gcloud builder
+
+```
+gcloud builds submit java/pubsub --config=./cloudbuild.yaml
 ```
 
 ### Spring Boot health and metrics endpoints

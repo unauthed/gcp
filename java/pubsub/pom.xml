@@ -84,6 +84,14 @@
 			<artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-datastore</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-storage</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -116,6 +124,7 @@
 					<folders>
 						<folder>src/test/resources</folder>
 					</folders>
+					<arguments>-Dlogging.file=target/app.log</arguments>
 				</configuration>
 				<executions>
 					<execution>
@@ -169,7 +178,9 @@
 						<artifactId>appengine-maven-plugin</artifactId>
 						<version>1.3.2</version>
 						<configuration>
-							<deploy.stopPreviousVersion>true</deploy.stopPreviousVersion>
+							<deploy.dockerDirectory>${basedir)</deploy.dockerDirectory>
+							<deploy.promote>false</deploy.promote>
+							<deploy.stopPreviousVersion>false</deploy.stopPreviousVersion>
 						</configuration>
 					</plugin>
 				</plugins>

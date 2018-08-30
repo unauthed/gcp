@@ -46,6 +46,7 @@ automatic_scaling:
 #  instances: 1
 
 env_variables:
+  BUCKET_NAME: 'testBucket'
   SPRING_PROFILES_ACTIVE: 'development'
   GDG_MESSAGE_TOPIC: 'testTopic'
   GDG_MESSAGE_SUBSCRIPTION: 'testSubscription'

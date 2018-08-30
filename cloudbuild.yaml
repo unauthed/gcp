@@ -1,14 +1,14 @@
 
 steps:
-- name: 'gcr.io/cloud-builders/mvn'
-  args: ['package']
-  dir: 'java/pubsub'
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/$PROJECT_ID/pubsub', '.']
-  dir: 'java/pubsub'
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy']
-  dir: 'java/pubsub/src/main/appengine'
-images: ['gcr.io/$PROJECT_ID/gdg-pubsub']
-timeout: '1600s'
+  - name: 'eu.gcr.io/${PROJECT_ID}/mvn'
+    args: ['package']
+    dir: 'java/pubsub'
+  - name: 'eu.gcr.io/${PROJECT_ID}/mvn'
+    args: ['appengine:deploy', '-Pgcp', "-DskipTests", ""]
+    dir: 'java/pubsub'
+
+timeout: 1200s
 tags: ['gdg']
+options:
+  machineType: 'N1_HIGHCPU_8'
+  diskSizeGb: 50

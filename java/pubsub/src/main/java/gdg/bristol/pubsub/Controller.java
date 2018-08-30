@@ -13,6 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.google.cloud.Timestamp;
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.IncompleteKey;
+import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StructuredQuery;
+
 import gdg.bristol.pubsub.Application.PubSubOutboundGateway;
 import io.micrometer.core.annotation.Timed;
 
@@ -60,4 +71,33 @@ public class Controller {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
+
+	@PostMapping("/saveMessage")
+	public ResponseEntity<String> saveMessage(@RequestParam("message") String message) {
+
+		Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+		KeyFactory keyFactory = datastore.newKeyFactory().setKind("messages");
+		IncompleteKey key = keyFactory.setKind("messages").newKey();
+
+		FullEntity<IncompleteKey> dataEntity = FullEntity.newBuilder(key).set("message", message)
+				.set("timestamp", Timestamp.now()).build();
+		datastore.add(dataEntity);
+
+		// retrieve the last 10 messages from the datastore, ordered by timestamp.
+		Query<Entity> query = Query.newEntityQueryBuilder().setKind("messages")
+				.setOrderBy(StructuredQuery.OrderBy.desc("timestamp")).setLimit(10).build();
+		QueryResults<Entity> results = datastore.run(query);
+
+		StringBuffer body = new StringBuffer();
+		while (results.hasNext()) {
+			Entity entity = results.next();
+			String line = String.format("time: %s message: %s\n", entity.getTimestamp("timestamp"),
+					entity.getString("message"));
+			body.append(line);
+
+		}
+
+		return ResponseEntity.ok(body.toString());
+	}
+
 }

@@ -6,7 +6,7 @@ GDG Bristol meetup group repository
   + [Code of Conduct](docs/code-of-conduct.md)
   + [Contributing](docs/contributing.md)
 - [Meetup](https://www.meetup.com/GDG-Bristol/)
-- [Slack](https://join.slack.com/t/unauthed/shared_invite/enQtNDA5OTcyMTU3NDg5LTIxZTQ5NjhmMWE1ZjY4YmQzOTlmMjQxNjU3NGNlZjhjZjQ1ODczMzZhNTI3ZjJmMTk2NGY1MDY0OTE1ODk0ZDU)
+- [Slack](https://join.slack.com/t/gdg-bristol/shared_invite/enQtNDI4MDAwMTA2MzIwLTcwYmY3ZmFmZGVjMzdjZDIxOTFmMTJkMmM5NjYzMzIyYzE2MTI3NGM4YWRkNTIyOTI2YjJhZTA2ZWIzMGRiOWQ)
 
 ## Repository Layout
 
@@ -14,4 +14,3 @@ GDG Bristol meetup group repository
   + [pubsub](java/pubsub/)
 - **node** projects
 - **scripts** useful for presenting and developing code etc
-

@@ -1,14 +1,25 @@
 
 steps:
   - name: 'eu.gcr.io/${PROJECT_ID}/mvn'
-    args: ['package']
+    args: ['package', '-DskipTests', '-Pdeb,rpm,docker']
     dir: 'java/pubsub'
-  - name: 'eu.gcr.io/${PROJECT_ID}/mvn'
-    args: ['appengine:deploy', '-Pgcp', "-DskipTests", ""]
+  - name: gcr.io/cloud-builders/gsutil
+    args: ['cp', '/workspace/java/pubsub/target/*.jar', 'gs://seagulls-build-artifacts/jar/']
+  - name: gcr.io/cloud-builders/gsutil
+    args: ['cp', '/workspace/java/pubsub/target/rpm/gdg-pubsub/RPMS/noarch/*.noarch.rpm', 'gs://seagulls-build-artifacts/rpm/']
     dir: 'java/pubsub'
+  - name: gcr.io/cloud-builders/gsutil
+    args: ['cp', '/workspace/java/pubsub/target/*.deb', 'gs://seagulls-build-artifacts/deb/']
+    dir: 'java/pubsub'
+
+#  - name: 'eu.gcr.io/${PROJECT_ID}/mvn'
+#    args: ['appengine:deploy', '-DskipTests', '-Pgcp', '-DcloudSdkPath=/builder/google-cloud-sdk/bin/', '-Dapp.deploy.project=${PROJECT_ID}', '-Dapp.deploy.version=777', -Dapp.deploy.bucket=gs://seagulls-build-artifacts/stage/']
+#    dir: 'java/pubsub'
+
+images: ['eu.gcr.io/${PROJECT_ID}/gdg-pubsub']
 
 timeout: 1200s
 tags: ['gdg']
 options:
   machineType: 'N1_HIGHCPU_8'
-  diskSizeGb: 50
+  diskSizeGb: 22

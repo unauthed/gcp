@@ -60,7 +60,7 @@ public class Controller {
 	@PostMapping("/proxyMessage")
 	public ResponseEntity<String> proxyMessage(@RequestParam("message") String message) {
 
-		log.debug("Posting message '{}' to '{}'.", message, runtimeConfiguration.getProxyEndpoint());
+		log.debug("Proxy message '{}' to '{}'.", message, runtimeConfiguration.getProxyEndpoint());
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("message", message);
 

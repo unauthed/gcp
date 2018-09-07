@@ -84,6 +84,14 @@
 			<artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-datastore</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-storage</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -167,9 +175,10 @@
 					<plugin>
 						<groupId>com.google.cloud.tools</groupId>
 						<artifactId>appengine-maven-plugin</artifactId>
-						<version>1.3.2</version>
+    					<version>1.3.2</version>						
 						<configuration>
-							<deploy.stopPreviousVersion>true</deploy.stopPreviousVersion>
+							<deploy.promote>false</deploy.promote>
+							<deploy.stopPreviousVersion>false</deploy.stopPreviousVersion>
 						</configuration>
 					</plugin>
 				</plugins>
@@ -265,10 +274,10 @@
 							</execution>
 						</executions>
 						<configuration>
-							<repository>gdg-bristol/${project.artifactId}</repository>
+							<repository>eu.gcr.io/seagulls-stop-it-now/${project.artifactId}</repository>
 							<tag>${project.version}</tag>
 							<buildArgs>
-								<ARTIFACT_FILE>${project.build.finalName}.jar</ARTIFACT_FILE>
+								<ARTIFACT_FILE>target/${project.build.finalName}.${project.packaging}</ARTIFACT_FILE>
 							</buildArgs>
 						</configuration>
 						<dependencies>

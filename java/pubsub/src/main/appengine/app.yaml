@@ -9,9 +9,6 @@ handlers:
   - url: /.*
     script: required but ignored WTF?
 
-skip_files:
-  - ^(.*/)?\.bak$
-
 network:
   instance_tag: gdg-bristol
 
@@ -47,5 +44,6 @@ automatic_scaling:
 
 env_variables:
   SPRING_PROFILES_ACTIVE: 'development'
+  GDG_BUCKET_NAME: 'testBucket'
   GDG_MESSAGE_TOPIC: 'testTopic'
   GDG_MESSAGE_SUBSCRIPTION: 'testSubscription'

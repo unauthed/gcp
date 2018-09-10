@@ -12,7 +12,7 @@ steps:
     args: ['cp', 'java/pubsub/target/rpm/gdg-pubsub/RPMS/noarch/*.noarch.rpm', 'gs://seagulls-build-artifacts/rpm/']
 
   - name: 'eu.gcr.io/${PROJECT_ID}/spring'
-    args: ['appengine:deploy', '-DskipTests']
+    args: ['appengine:deploy', '-DskipTests', '-Pgcp']
     dir: 'java/pubsub'
 
 images: ['eu.gcr.io/${PROJECT_ID}/gdg-pubsub']

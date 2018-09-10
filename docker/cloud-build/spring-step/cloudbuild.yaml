@@ -16,5 +16,5 @@ images:
 - 'eu.gcr.io/$PROJECT_ID/spring'
 - 'eu.gcr.io/$PROJECT_ID/spring:jdk8-mvn3.5.4-gcp214'
 
-timeout: 2200s
+timeout: 2400s
 tags: ['gdg']

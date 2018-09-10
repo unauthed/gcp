@@ -1,6 +1,4 @@
-#ARG BASE_IMAGE=gcr.io/cloud-builders/javac:8
-ARG BASE_IMAGE=gcr.io/cloud-builders/gcloud
-FROM ${BASE_IMAGE}
+FROM gcr.io/cloud-builders/gcloud
 
 LABEL Description="This image is used to build Spring Boot artifacts with the Google Maven App Engine plugin."
 LABEL Maintainer="GDG Bristol <gdg@unauthed.io>"

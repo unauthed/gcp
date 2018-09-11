@@ -5,7 +5,7 @@ First you need to read and accept our [CONTRIBUTING.md](code-of-conduct.md) requ
 
 https://guides.github.com/activities/forking/
 
-## Fork our respository in GitHub
+## Fork our respository on GitHub
 
 ```
 git clone git@github.com:YOUR_ACCOUNT/gdg-bristol.git
@@ -34,7 +34,7 @@ git push origin master
 
 ----
 
-## GCP configure Mac OS using HomeBrew
+## Google Cloud SKK install on Mac OS using HomeBrew
 
 ```
 Install Homebrew:

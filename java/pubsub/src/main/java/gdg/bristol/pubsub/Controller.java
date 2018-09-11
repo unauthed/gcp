@@ -7,11 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.google.cloud.Timestamp;
 import com.google.cloud.datastore.Datastore;
@@ -47,12 +49,20 @@ public class Controller {
 		this.outboundGateway = outboundGateway;
 	}
 
-	@PostMapping("/publishMessage")
-	public RedirectView publishMessage(@RequestParam("message") String message) {
+	@GetMapping("/publishMessage/{message}")
+	public @ResponseBody ResponseEntity<String> publishMessageWithGet(@PathVariable("message") String message) {
 
-		log.info("Publishing message '{}'.", message);
+		log.info("Publishing message from GET request '{}'.", message);
 		outboundGateway.sendToPubSub(message);
-		return new RedirectView("/");
+		return ResponseEntity.ok("Published message from GET request.");
+	}
+
+	@PostMapping("/publishMessage")
+	public @ResponseBody ResponseEntity<String> publishMessageWithPost(@RequestParam("message") String message) {
+
+		log.info("Publishing message from POST request '{}'.", message);
+		outboundGateway.sendToPubSub(message);
+		return ResponseEntity.ok("Published message from POST request.");
 	}
 
 	@Timed(value = "post.proxyMessage.requests", histogram = true, percentiles = { 0.95, 0.99 }, extraTags = {

@@ -7,9 +7,6 @@ substitutions:
   _PROJECT_BUCKET: gdg-bristol-pubsub-artifacts
 
 steps:
-  - name: gcr.io/cloud-builders/git
-    args: ['fetch', '--unshallow']
-
   - name: 'eu.gcr.io/${PROJECT_ID}/spring'
     args: ['appengine:deploy', '-Pdeb,rpm,docker,gcp']
     dir: 'java/pubsub'

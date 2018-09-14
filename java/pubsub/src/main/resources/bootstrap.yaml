@@ -1,8 +1,5 @@
 
 spring:
-  sleuth:
-    web:
-      skipPattern: '(.+favicon.*)'
   cloud:
     gcp:
       logging:        
@@ -18,6 +15,9 @@ spring:
   profiles: 'production'
   main:
     banner-mode: 'off'  
+  sleuth:
+    web:
+      skipPattern: '(.+favicon.*)'
   cloud:
     gcp:
       logging:        
@@ -42,6 +42,8 @@ spring:
   main:
     banner-mode: 'off'  
   sleuth:
+    web:
+      skipPattern: '(.+favicon.*)'
     sampler:
       probability: '1'  # Send 100% of the request traces to Stackdriver
   cloud:

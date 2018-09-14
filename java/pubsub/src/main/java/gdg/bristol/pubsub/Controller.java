@@ -3,15 +3,20 @@ package gdg.bristol.pubsub;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.google.cloud.Timestamp;
 import com.google.cloud.datastore.Datastore;
@@ -47,12 +52,41 @@ public class Controller {
 		this.outboundGateway = outboundGateway;
 	}
 
-	@PostMapping("/publishMessage")
-	public RedirectView publishMessage(@RequestParam("message") String message) {
+	@GetMapping("/listen/**")
+	public @ResponseBody ResponseEntity<String> listen(HttpServletRequest request) {
 
-		log.info("Publishing message '{}'.", message);
+		String message = request.getRequestURI();
+		message = message.substring("/listen".length());
+
+		if (StringUtils.isEmpty(message)) {
+			final String warning = String.format("Warning empty message from GET /listen request.");
+			log.warn(warning);
+			return ResponseEntity.badRequest().body(warning);
+		}
+
+		if (!StringUtils.isEmpty(request.getQueryString())) {
+			message += "?" + request.getQueryString();
+		}
+
+		log.info("Publishing message from GET /listen request '{}'.", message);
 		outboundGateway.sendToPubSub(message);
-		return new RedirectView("/");
+		return ResponseEntity.ok(String.format("Published message from GET /listen request '%s'.", message));
+	}
+
+	@GetMapping("/publishMessage/{message}")
+	public @ResponseBody ResponseEntity<String> publishMessageWithGet(@PathVariable("message") String message) {
+
+		log.info("Publishing message from GET request '{}'.", message);
+		outboundGateway.sendToPubSub(message);
+		return ResponseEntity.ok("Published message from GET request.");
+	}
+
+	@PostMapping("/publishMessage")
+	public @ResponseBody ResponseEntity<String> publishMessageWithPost(@RequestParam("message") String message) {
+
+		log.info("Publishing message from POST request '{}'.", message);
+		outboundGateway.sendToPubSub(message);
+		return ResponseEntity.ok("Published message from POST request.");
 	}
 
 	@Timed(value = "post.proxyMessage.requests", histogram = true, percentiles = { 0.95, 0.99 }, extraTags = {
@@ -60,14 +94,14 @@ public class Controller {
 	@PostMapping("/proxyMessage")
 	public ResponseEntity<String> proxyMessage(@RequestParam("message") String message) {
 
-		log.debug("Proxy message '{}' to '{}'.", message, runtimeConfiguration.getProxyEndpoint());
+		log.debug("Proxying message '{}' to '{}'.", message, runtimeConfiguration.getProxyEndpoint());
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("message", message);
 
 		try {
 			return restTemplate.postForEntity(runtimeConfiguration.getProxyEndpoint(), params, String.class);
 		} catch (Exception e) {
-			log.warn("Posting message '{}' returned '{}'.", message, e.getMessage());
+			log.warn("Proxing message '{}' returned with error: '{}'.", message, e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}

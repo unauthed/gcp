@@ -1,0 +1,24 @@
+# gcloud deployment-manager deployments create dep1 --config test-deploy.yaml
+
+resources:
+  - name: test-deploy-vm1
+    type: compute.v1.instance
+    properties:
+      zone: us-central1-f
+      machineType: https://www.googleapis.com/compute/v1/projects/seagulls-stop-it-now/zones/us-central1-f/machineTypes/f1-micro
+      disks:
+      - deviceName: boot
+        type: PERSISTENT
+        boot: true
+        autoDelete: true
+        initializeParams:
+          sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-9
+      networkInterfaces:
+      - network: $(ref.test-deploy-network.selfLink)
+        accessConfigs:
+        - name: External NAT
+          type: ONE_TO_ONE_NAT
+  - name: test-deploy-network
+    type: compute.v1.network
+    properties:
+      IPv4Range: 10.0.0.1/16
